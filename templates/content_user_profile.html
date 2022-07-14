@@ -1,0 +1,127 @@
+{% extends 'template_base.html' %} 
+{% block title %}Homepage - Pardoc{% endblock %} 
+{% block content %}
+
+<div class="container">
+    <div class="row justify-content-center">
+
+        <!-- {{session}} -->
+        <h1 class="text-center mt-4">PROFILE</h1>
+        <div class="cardProfile shadow-lg">
+            <form action="update-users" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                    <div>
+                        USERNAME
+                    </div>
+                    <div>
+                        :
+                    </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input name="name" id="name" type="text" class="form-control mt-3" placeholder="{{user.name}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            EMAIL
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input name="email" id="email" type="email" class="form-control mt-3" placeholder="{{user.email}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            PHONE
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input type="tel" id="phone" name="phone" class="form-control mt-3" placeholder="{{user.phone}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            DOB
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <!-- <div class="mt-3">
+                            {{user.dob}}
+                        </div> -->
+                        
+                        <input name="dob" id="dob" type="date" class="form-control mt-3" value="{{user.dob}}">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            GENDER
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input id="gender" type="text" class="form-control mt-3" placeholder="{{user.gender}}">
+                        <div style="margin: 10px;">
+                            <p><input name="gender" type='radio' value='Male' onclick="editGender('Male')"/>Male</p>
+                            <p><input name="gender" type='radio' value='Female' onclick="editGender('Female')"/>Female</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            TB
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input name="tb" id="tb" type="number" class="form-control mt-3" placeholder="{{user.tb}} cm">
+                    </div>
+                </div>
+                <div class="row">
+                    <label class="control-label col-sm-3 text-start my-xxl-auto mt-3 d-flex justify-content-between" for="name">
+                        <div>
+                            BB
+                        </div>
+                        <div>
+                            :
+                        </div>
+                    </label> 
+                    <div class="col-sm-9">
+                        <input name="bb" id="bb" type="number" class="form-control mt-3" placeholder="{{user.bb}} kg">
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <button type="submit" class="mt-4 btnUpdate">Update Profile</button>      
+                </div>
+                     
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+<script>
+    function editGender(selectgender){
+        document.getElementById('gender').setAttribute('value', selectgender)
+    }
+</script>
+{% endblock %}

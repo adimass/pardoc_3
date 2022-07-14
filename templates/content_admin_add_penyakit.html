@@ -1,0 +1,61 @@
+{% extends 'template_base.html' %} 
+{% block title %}Add Disease{% endblock %} 
+{% block content %}
+
+
+
+<article>
+
+
+    <div class="container"
+      style="position: absolute;left: 0;right: 0;top: 40%;transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-webkit-transform: translateY(-50%);-o-transform: translateY(-50%);">
+      <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+        <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
+          <div class="p-5">
+            <div class="text-center">
+              <h4 class="text-dark mb-4">NEW DISEASE</h4>
+            </div>
+            <form class="user" action="add_penyakit" enctype="multipart/form-data" method="post">
+              <div class="form-floating mb-3"><input class="form-control form-control-user" type="text" name="name" id="name" placeholder="Name of Symptoms"
+                  required />
+                
+                  <label for="name">Input Name of Disease</label>
+                </div>
+                
+              <div class="form-floating mb-3"><input class="form-control form-control-user" type="text" id="keterangan" name="keterangan"
+                  placeholder="Question for user" required />
+                  <label for="pertanyaan">Input Description of Disease</label>
+                </div>
+              <div class="row mb-2">
+                <p id="emailErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+                <p id="passwordErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+              </div>
+                <div class="row mb-4 ml-1">
+                  <div class="boxfloat">
+                    {% for i in gejala %}
+                    <input type="checkbox"  name="gejalabox" id="gejalabox" value="{{i[0]}}" style="text-transform: lowercase;"> {{i[1]}} <br />
+                    {% endfor %}
+                </div>
+              </div>
+              <div class="row mb-4 ml-1">
+                <select class="form-select" aria-label="Default select example"  name="level" id="level">
+                  <option selected>Open this select menu</option>
+                  <option value="HIGH">High</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="LOW">Low</option>
+                </select>
+
+                
+              </div>
+              
+              <button id="submitBtn" class="btn btn-primary d-block btn-user w-100" type="submit">Add Symptoms</button>
+              <hr />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  
+  </article>
+{% endblock %}

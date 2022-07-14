@@ -1,0 +1,56 @@
+{% extends 'template_base.html' %} 
+{% block title %}Homepage - Pardoc{% endblock %} 
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<section class="testimonials">
+<div class="row">
+	<div class="large-12 large-centered column">
+	<h3>ERROR</h3>
+	<span>
+	{% for message in messages %}
+	{{ message }}
+	{% endfor %}
+	</span><p></p>
+</div>
+</div>
+</section>
+{% endif %}
+{% endwith %}
+
+<!-- {{session}} -->
+
+<a href="/isi_wallet" style="text-decoration: none; color: black;">
+	<div class="row justify-content-center" >
+		<div class="cardListChatUser">
+			<h3 class="card-title">amount of money :</h3>
+			<h5 class="jobtype">{{ money }}</h5>
+		</div>
+	</div>   
+</a>
+
+<img src="static/images/dokter.jpg" class="position-relative" style="margin: 36px 20px;" alt="">
+<div>
+	<div class="btnDiagnose position-absolute">
+		<a href="{{ url_for('bp_self_diagnose.self_diagnose')}}">DIAGNOSE NOW</a>
+	</div>
+</div>
+
+<div class="row p-3 justify-content-center">
+	<!-- <a class="btnHistory col-5 p-5 mt-3 m-3" href="{{ url_for('bp_self_diagnose.self_diagnose')}}">History</a> -->
+
+
+{% if chat %}
+	<a class="btnConsul col-5 p-5 mt-3 m-3" href="{{ url_for('bp_chat.content_private_chat')}}"><h3>CHAT DOCTOR</h3></a>
+{% endif %}
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'template_base.html' %} 
+{% block title %}List Symptoms{% endblock %} 
+{% block content %}
+
+
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- {% for i in gejala %}
+      <div class="cardListSymptoms shadow-lg">
+        <h3>{{ i[1] }}</h3>
+        <h3>{{i[2]}} ?</h3>
+        <a href="{{ url_for('bp_profile.delete_gejala',gejalaId = i[0]) }}" class="btn btn-danger">DELETE</a>
+      </div>
+      {% endfor %} -->
+
+      <table class="tableDisease mt-4">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>NAME SYMPTOMS</th>
+            <th>QUESTIONS OF SYMPTOMS</th>
+            <th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for i in gejala %}
+            <tr>
+              <td>{{ loop.index + pagination.skip }}</td>
+              <td>{{ i[1] }}</td>
+              <td>{{ i[2] }}</td>
+              <td><a href="{{ url_for('bp_profile.delete_gejala',gejalaId = i[0]) }}" class="btn btn-danger">DELETE</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+
+
+
+
+      <div class="text-center mt-4 mb-2">
+        {{ pagination.info }}
+      </div>
+      <div class="wrappagination mb-4">
+        {{ pagination.links }} 
+      </div>
+
+      {% if session['role'] == 'dokter' %}
+      <a href="{{ url_for('bp_profile.page_add_gejala') }}" class="btn btn-dark">Add SYMPTOMS</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+{% endblock %}

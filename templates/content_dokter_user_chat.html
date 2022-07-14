@@ -1,0 +1,54 @@
+{% extends 'template_base.html' %} 
+{% block title %}List Chat Pasien{% endblock %} 
+{% block content %}
+
+
+<!-- {{ pasien }} -->
+
+<!-- {% if pasien %}
+
+
+    {% for i in pasien %}
+
+
+        <a href="{{ url_for('bp_chat.content_private_chat',userId = i[0]) }}">
+            <div class="card">
+                <div class="card-header">
+                {{ i[7] }}
+                </div>
+                <div class="card-body">
+                <h5 class="card-title">{{i[1]}}</h5>
+                <p class="card-text">{{i[4]}}</p>
+                </div>
+            </div>
+        </a>
+
+  {% endfor %}
+
+{% endif %} -->
+
+
+{% if pasien %}
+<div id="view"> 
+
+    
+    <div id="container">
+       <h1 class="text-center mt-4 mb-2">List Chat User</h1>
+        {% for i in pasien %}
+        <a href="{{ url_for('bp_chat.content_private_chat',userId = i[0]) }}" style="text-decoration: none; color: black;">
+            <div class="row justify-content-center" >
+                <div class="cardListChatUser">
+                    <h3 class="card-title">{{i[1]}}</h3>
+                    <h5 class="jobtype">{{i[4]}}</h5>
+                </div>
+            </div>   
+        </a>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,77 @@
+{% extends 'template_base.html' %} 
+{% block title %}Login - Pardoc{% endblock %} 
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<section class="testimonials">
+<div class="row">
+	<div class="large-12 large-centered column">
+	<h3>ERROR</h3>
+	<span>
+	{% for message in messages %}
+	{{ message }}
+	{% endfor %}
+	</span><p></p>
+</div>
+</div>
+</section>
+{% endif %}
+{% endwith %}
+
+<!-- <section class="contact" id="contact">
+
+              <form action="login" method="POST">
+                   <div class="inputEmail">
+                      <label class="emailText">Email:</label>
+                       <input type="email" name="email" title="Email" class="defaultText defaultTextActive"  required> 
+                   </div>
+                  <div class="large-6 column">
+                      <label>Password:</label>
+                       <input type="password" name="password" title="Password" class="defaultText defaultTextActive"  required> 
+                  </div>
+                  <div class="large-12 column">
+                      <input type="submit" value="login" class="cta" >
+                  </div> 
+              </form>
+          </div>
+      </div>
+
+  
+  </section> -->
+
+
+    <section class="position-relative">
+        
+        <div class="container" >
+            <div class="row mb-3">
+                <div class="col-md-4 col-xl-6 text-center mx-auto">
+                    <h2>LOGIN</h2>
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 col-xl-4">
+                    <div class="card mb-5">
+                        <div class="card-body d-flex flex-column align-items-center shadow-lg">
+                            <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4"><svg class="bi bi-person" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"></path>
+                                </svg></div>
+                            <form class="text-center" method="post" action="login">
+                                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email" required /></div>
+                                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password" required /></div>
+                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" value="login" style="background-color:#F87474; border-color: #F87474;" >Login</button></div>
+                                <p class="text-muted">not have an account? <a  href="{{ url_for('bp_register.register') }}" style="color:#F87474;">register here!</a></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+  
+
+
+{% endblock %}

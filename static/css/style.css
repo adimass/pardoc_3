@@ -1,0 +1,582 @@
+
+article {
+  margin: auto 0;
+}
+
+
+body{
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+} 
+
+/* .navbar {
+  position: relative;
+  display: flex;
+  background-color: #FFB562;
+} */
+
+.footerDefault {
+  background-color: #F9F2ED;
+}
+
+.bg-dark {
+  --bs-bg-opacity: 1;
+  background-color: rgba(var(--bs-dark-rgb),var(--bs-bg-opacity))!important;
+}
+
+/* @media (min-width:768px) {
+  .navbar-expand-md {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width:1200px) {
+  .py-xl-5 {
+    padding-top: 3rem!important;
+    padding-bottom: 3rem!important;
+  }
+} */
+
+.position-relative {
+  position: relative!important;
+  height: 100%;
+  background-color: #F9F2ED;
+}
+
+.bs-icon.bs-icon-primary {
+  color: var(--bs-white);
+  background: var(--bs-primary);
+}
+
+.bs-icon.bs-icon-circle {
+  border-radius: 50%;
+  background-color:#F87474;
+}
+
+.bs-icon-xl {
+  --bs-icon-size: 2.5rem;
+}
+
+.bs-icon {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--bs-icon-size);
+  width: calc(var(--bs-icon-size) * 2);
+  height: calc(var(--bs-icon-size) * 2);
+  color: var(--bs-primary);
+}
+
+#home{
+  background-color: #F9F2ED;
+}
+
+.navbar-custom{
+  background-color: #F87474;
+}
+
+/* .columns{
+  position: relative;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em;
+  width: 100%;
+  float: left;
+} */
+
+
+/* .pagination > li > a
+{
+    background-color: white;
+    color: #5A4181;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181 !Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #5A4181 !Important;
+    border: solid 1px #5A4181;
+} */
+
+.page-item a{
+  color: black;
+}
+
+.pagination > .active > a{
+  color: white;
+    background-color: #FFB562 !Important;
+    border: solid 1px #FFB562 !Important;
+}
+
+.boxfloat { border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll; }
+
+
+/* baru buat */
+li {
+  list-style-type: none;
+}
+
+a:link{
+  color:inherit;
+}
+
+.btnDiagnose{
+  background: #F87474;
+  border: 4px solid white;
+  border-radius: 20px;
+  width: 255px;
+  height: 50px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease 0.6s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.btnDiagnose a{
+  color:white ;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnDiagnose:hover{
+  background-color: #F87474;
+  text-decoration: none;
+}
+
+.btnConsul{
+  border-radius: 10px;
+  background-color: #ffb562;
+  width: 255px;
+  height: 50px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+}
+
+.btnConsul a{
+  display: table-cell;
+  vertical-align: middle; 
+}
+
+.btnConsul h3{
+  color:#F9F2ED;
+}
+
+.btnConsul:hover{
+  background-color: #F87474;
+  text-decoration: none;
+}
+
+.btnHistory{
+  border-radius: 10px;
+  background-color: #ffb562;
+  width: 255px;
+  height: 50px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease 0.6s;
+}
+
+.btnHistory a{
+  display: table-cell;
+  vertical-align: middle;
+}
+.btnHistory h3{
+  color:#F9F2ED;
+}
+
+.btnHistory:hover{
+  background-color: #F87474;
+  text-decoration: none;
+}
+
+.btnDiagnose  a:hover{
+  text-decoration: none;
+}
+ 
+.btnConsul a:hover{
+  text-decoration: none;
+}
+
+.btnHistory a:hover{
+  text-decoration: none;
+}
+
+.btnListUser {
+  font-size: 40px;
+  margin: 70px 0 70px;
+  border-radius: 10px;
+  background-color: #F87474;
+  height: 240px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+}
+
+.btnListUser  a{
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnListUser:hover{
+  background-color: #FFB562;
+  color: #000;
+}
+
+.btnListUser:hover a{
+  
+  color: white;
+}
+
+.btnListDisease {
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: #3ab0ff;
+  width: 320px;
+  height: 145px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+}
+
+.btnListDisease  a{
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnListDisease:hover{
+  background-color: #F87474;
+  color: #000;
+}
+
+.btnListDisease:hover a{
+  color: white;
+}
+
+.btnListSymtoms {
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: #3ab0ff;
+  width: 320px;
+  height: 145px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+}
+
+.btnListSymtoms  a{
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnListSymtoms:hover{
+  background-color: #F87474;
+  color: #000;
+  
+}
+
+.btnListSymtoms:hover a{
+  color: white;
+}
+
+
+.btnListDrug {
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: #3ab0ff;
+  width: 320px;
+  height: 145px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+  color:#F87474;
+}
+
+.btnListDrug  a{
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnListDrug:hover{
+  background-color: #F87474;
+  color: #000;
+}
+
+.btnListDrug:hover a{
+  color: white;
+}
+
+.btnListUser  a:hover{
+  text-decoration: none;
+}
+ 
+.btnListDisease a:hover{
+  text-decoration: none;
+}
+
+.btnListSymtoms a:hover{
+  text-decoration: none;
+}
+
+.btnListDrug a:hover{
+  text-decoration: none;
+}
+
+.cardQuestion{
+  border-radius: 10px;
+  width: 70vw;
+  padding: 100px;
+  margin: 50px 0 20px;
+  background-color: white;
+}
+
+.cardQuestion h2{
+  font-size: 42px;
+}
+
+.cardQuestion label{
+  font-size: 24px;
+}
+
+.btnSubmit{
+  border-radius: 15px;
+  padding: 10px;
+  width: 105px;
+  background-color: #3ab0ff;
+  transition: all ease 0.6s;
+  
+}
+
+.btnSubmit:hover{
+  color: white;
+  background-color: #F87474;
+  text-decoration: none;
+}
+
+.cardListUser{
+  border: 2px solid;
+  border-radius: 10px;
+  width: 80vw;
+  padding: 20px 45px;
+  margin: 50px 0 50px;
+}
+
+.cardListUser a{
+  float: right;
+  margin-top: -60px;
+}
+
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}
+th, td {
+  padding: 10px;
+  text-align: center !important;
+}
+th {
+  background-color: #3ab0ff;
+  color: white;
+}
+
+.wrappagination{
+  display:flex;
+  justify-content: center;
+}
+
+/* .card{
+  margin: 20px 5px;
+} */
+
+.cardListSymptoms{
+  background-color:white;
+  border-radius: 10px;
+  width: 80vw;
+  padding: 20px 45px;
+  margin: 30px 0 30px;
+}
+
+.cardListSymptoms a{
+  float: right;
+  margin-top: -60px;
+}
+
+.cardProfile{
+  
+  background-color:white; 
+  border-radius: 10px;
+  padding: 20px 80px;
+  margin: 30px 0 30px;
+  max-width: 840px;
+}
+
+.btnUpdate{
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 10px;
+  width: 195px;
+  background-color: #ffb562;
+  transition: all ease 0.6s;
+}
+
+.btnUpdate:hover{
+  background-color: #F87474;
+}
+
+.time-right {
+  float: right;
+ 
+}
+
+/* Style time text */
+.time-left {
+  float: left;
+  color: #aaa;
+}
+
+.time-right span{
+  color: #aaa;
+}
+
+
+
+.cardChat{
+  
+  border-radius: 10px;
+  width: 80vw;
+  padding: 20px 45px;
+  margin: 15px 0 15px;
+}
+
+.cardChat a{
+  float: right;
+  margin-top: -60px;
+}
+
+.cardResult{
+  background-color: white;
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 20px 80px;
+  margin: 30px 0 30px;
+  max-width: 840px;
+}
+
+.btnResultDiagnose{
+  font-size: 24px;
+  border-radius: 10px;
+  background-color: #F87474;
+  height: 90px;
+  text-align: center;
+  display: table;
+  text-decoration: none;
+  transition: all ease-out 0.6s;
+}
+
+.btnResultDiagnose  a{
+  color: white;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.btnResultDiagnose:hover{
+  background-color: #ffb562;
+  color: #000;
+}
+
+.btnResultDiagnose  a:hover{
+  text-decoration: none;
+}
+
+
+.tableDisease th{
+  background-color:#F87474;
+}
+
+.tableDisease tbody{
+  background-color:white;
+}
+
+.boxWriteChat{
+  border: 2px solid;
+  border-radius: 10px;
+  padding: 18px 48px;
+  margin: 30px 0 30px;
+  max-width: 840px;
+}
+
+.btnSendChat{
+  color: white;
+  background: #3ab0ff;
+  border-radius: 15px;
+  transition: all ease-out 0.6s;
+}
+
+.btnSendChat:hover{
+  background: #F87474;
+}
+
+.btn-danger{
+  color: white !important;
+  background-color: #ffb562 !important;
+}
+
+.btn-danger:hover{
+  background-color: #dc3545 !important;
+}
+
+.btn-dark {
+  background-color: #ffb562 !important;
+}
+
+.cardListChatUser{
+  background-color: white;
+  border: 2px solid;
+  border-radius: 10px;
+  width: 30vw;
+  padding: 20px 45px;
+  margin: 50px 0 50px;
+}
+
+.cardListChatUser:hover{
+  background-color: #FFB562;
+}
+
+.chatLimit{
+  text-decoration: none;
+}

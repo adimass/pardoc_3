@@ -1,0 +1,51 @@
+{% extends 'template_base.html' %} 
+{% block title %}Doktor - Pardoc{% endblock %} 
+{% block content %}
+
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<section class="testimonials">
+<div class="row">
+	<div class="large-12 large-centered column">
+	<h3>ERROR</h3>
+	<span>
+	{% for message in messages %}
+	{{ message }}
+	{% endfor %}
+	</span><p></p>
+</div>
+</div>
+</section>
+{% endif %}
+{% endwith %}
+
+
+<div class="container">
+	<div class="btnListUser col-12">
+		<a href="{{ url_for('bp_chat.content_list_chat')}}">CHAT PATIENT</a>
+	</div>
+	
+	<div class="row justify-content-center">
+		<div class="col-4">
+			<div class="btnListDisease w-100">
+				<a href="{{ url_for('bp_profile.list_penyakit')}}">LIST DISEASE</a>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="btnListSymtoms w-100">
+				<a href="{{ url_for('bp_profile.list_gejala')}}">LIST SYMPTOMS</a>
+			</div>
+		</div>
+		<div class="col-4">
+			<div class="btnListDrug w-100">
+				<a href="{{ url_for('bp_profile.list_drug')}}">LIST DRUG</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+
+{% endblock %}
