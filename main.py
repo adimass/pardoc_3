@@ -69,7 +69,7 @@ app.register_blueprint(bp_transaksi)
 if __name__ == '__main__':
 
     # print(SERVER_RUN)
-    app.run('localhost', 8080,debug=True)
+    app.run('localhost', 8080,debug=False)
     
     # socketio.run(app,debug=True)
 
