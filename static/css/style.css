@@ -548,11 +548,14 @@ th {
 }
 
 .btn-danger{
+  border-color: #198754 !important;
   color: white !important;
   font-size: 10px !important;
+  background-color: #198754 !important;
 }
 
 .btn-danger:hover{
+  border-color: #dc3545 !important;
   background-color: #dc3545 !important;
 }
 
