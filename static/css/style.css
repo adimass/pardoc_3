@@ -120,12 +120,6 @@ body{
   color: black;
 }
 
-.pagination > .active > a{
-  color: white;
-    background-color: #198754 !Important;
-    border: solid 1px #198754 !Important;
-}
-
 .boxfloat { border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll; }
 
 
