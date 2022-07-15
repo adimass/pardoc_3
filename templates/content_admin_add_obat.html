@@ -5,8 +5,7 @@
 
 
 <article>
-    <div class="container"
-    style="position: absolute;left: 0;right: 0;top: 50%;transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-webkit-transform: translateY(-50%);-o-transform: translateY(-50%);">
+  <div class="container masthead">
     <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
       <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
         <div class="p-5">
@@ -22,28 +21,24 @@
                 placeholder="Question for user" required />
                 <label for="pertanyaan">Input Description for DRUG</label>
               </div>
-            <div class="row mb-4 ml-1">
+            <div class="mb-4 ml-1">
                 <select class="form-select" aria-label="Default select example"  name="penyakit" id="penyakit">
                   <option selected>List of Disease</option>
                   {% for i in penyakit %}
                   <option value="{{i[0]}}">{{i[1]}}</option>
                   {% endfor %}
                 </select>
-            <div class="row mb-3">
+            <div class="row mb-4 ml-1">
               <p id="emailErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
               <p id="passwordErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
-            </div><button id="submitBtn" class="btn btn-primary d-block btn-user w-100" type="submit">Add Symptoms</button>
-            <hr />
+            </div>
+            
+            <button id="submitBtn" class="btn btn-primary d-block btn-user w-100" type="submit">Add Symptoms</button>
+            <hr/>
           </form>
         </div>
       </div>
     </div>
-    <div></div>
   </div>
-  
-  
-  
-  </article>
-     
-
+</article>
 {% endblock %}

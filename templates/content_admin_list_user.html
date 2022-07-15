@@ -3,10 +3,56 @@
 {% block content %}
 
 
+<div id="view"> 
+  <div class="container masthead">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-5 text-gray-800">Tables</h1>
 
-    <div id="view"> 
-        <div class="container"> 
-          <!-- row 01 -->
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables User</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAME USER</th>
+                        <th>LEVEL</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </thead>
+                    <!-- <tfoot>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAMA USER</th>
+                        <th>LEVEL</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </tfoot> -->
+                    <tbody>
+                      {% for i in list_user %}
+                      <tr>
+                        <td>{{ loop.index}}</td>
+                        <td>{{ i[1] }}</td>
+                        <td>{{ i[0] }}</td>
+                        <td><a href="{{ url_for('bp_profile.delete_penyakit',penyakitId = i[0]) }}" class="btn btn-danger">
+                          <i class="fa-solid fa-trash"></i>
+                          DELETE</a></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>  
+
+    <!-- <div id="view"> 
+        <div class="container masthead"> 
           <div class="row justify-content-center">
       
               <table class="tableDisease mt-4">
@@ -31,6 +77,6 @@
                 </table>
           </div>   
         </div>
-    </div>  
+    </div>   -->
 
 {% endblock %}

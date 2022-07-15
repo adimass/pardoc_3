@@ -21,20 +21,99 @@
 
 <!-- {{session}} -->
 
-<a href="/isi_wallet" style="text-decoration: none; color: black;">
-	<div class="row justify-content-center" >
-		<div class="cardListChatUser">
-			<h3 class="card-title">amount of money :</h3>
-			<h5 class="jobtype">{{ money }}</h5>
+<header class="masthead bg-primary text-white text-center">
+	<div class="container d-flex align-items-center flex-column">
+		<!-- Masthead Avatar Image-->
+		<img class="masthead-avatar mb-5" src="static/images/avataaars.svg" alt="..." />
+		<!-- Masthead Heading-->
+		<h1 class="masthead-heading text-uppercase mb-0">WELCOME {{session.name}}</h1>
+		<!-- Icon Divider-->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+			<div class="divider-custom-line"></div>
 		</div>
-	</div>   
-</a>
+		<!-- Masthead Subheading-->
+		<p class="masthead-subheading font-weight-light mb-0">Welcome to PARDOC</p>
+		<p class="font-weight-bold fs-5 mb-0">Your Balance :  Rp. {{ money }}</p>
+	</div>
+</header>
 
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-	Launch static backdrop modal
-</button>
+<section class="page-section portfolio" id="portfolio">
+	<div class="container">
+		<!-- Portfolio Section Heading-->
+		<h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Article</h2>
+		<!-- Icon Divider-->
+		<div class="divider-custom">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+			<div class="divider-custom-line"></div>
+		</div>
+		<!-- Portfolio Grid Items-->
+		<div class="row justify-content-center">
+			<!-- Portfolio Item 1-->
+			<div class="col-md-6 col-lg-4 mb-5 mx-auto">
+				<div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+					<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+						<div class="portfolio-item-caption-content text-center text-white"><i class="fa-solid fa-book-open fa-3x"></i></div>
+					</div>
+					<img class="img-fluid" src="static/images/avataaars.svg" alt="..." />
+				</div>
+				<div class="text-center mt-3">
+					<a href="" style="text-decoration:none"><h3>Title</h3></a>
+				</div>
+			</div>
+			<!-- Portfolio Item 2-->
+			<div class="col-md-6 col-lg-4 mb-5 mx-auto">
+				<div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+					<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+						<div class="portfolio-item-caption-content text-center text-white"><i class="fa-solid fa-book-open fa-3x"></i></div>
+					</div>
+					<img class="img-fluid" src="static/images/avataaars.svg" alt="..." />
+				</div>
+				<div class="text-center mt-3">
+					<a href="" style="text-decoration:none"><h3>Title</h3></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
-<img src="static/images/dokter.jpg" class="position-relative" style="margin: 36px 20px;" alt="">
+<section class="page-section bg-primary text-white mb-0" id="about">
+	<div class="container">
+		<!-- About Section Heading-->
+		<h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
+		<!-- Icon Divider-->
+		<div class="divider-custom divider-light">
+			<div class="divider-custom-line"></div>
+			<div class="divider-custom-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+			<div class="divider-custom-line"></div>
+		</div>
+		<!-- About Section Content-->
+		<div class="row">
+			<div class="col-lg-4 ms-auto"><p class="lead">Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional SASS stylesheets for easy customization.</p></div>
+			<div class="col-lg-4 me-auto"><p class="lead">You can create your own custom avatar for the masthead, change the icon in the dividers, and add your email address to the contact form to make it fully functional!</p></div>
+		</div>
+		<!-- About Section Button-->
+		<div class="row">
+			<div class="col-lg-4 ms-auto text-center mt-4">
+				<a class="btn btn-xl btn-outline-light" href="{{ url_for('bp_self_diagnose.self_diagnose')}}">
+					<i class="fa-solid fa-person-dots-from-line"></i>
+					Diagnose Now
+				</a>
+			</div>
+			<div class="col-lg-4 mr-auto text-center mt-4">
+				<a class="btn btn-xl btn-outline-light" href="" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<i class="fa-solid fa-user-doctor"></i>
+					Consultation Now
+				</a>
+			</div>
+		</div>
+		
+	</div>
+</section>
+
+<!-- <img src="static/images/dokter.jpg" class="position-relative" style="margin: 36px 20px;" alt="">
 <div>
 	<div class="btnDiagnose position-absolute">
 		<a href="{{ url_for('bp_self_diagnose.self_diagnose')}}">DIAGNOSE NOW</a>
@@ -42,20 +121,27 @@
 </div>
 
 <div class="row p-3 justify-content-center">
-	<!-- <a class="btnHistory col-5 p-5 mt-3 m-3" href="{{ url_for('bp_self_diagnose.self_diagnose')}}">History</a> -->
 
 
 {% if chat %}
 	<a class="btnConsul col-5 p-5 mt-3 m-3" href="{{ url_for('bp_chat.content_private_chat')}}" data-bs-toggle="modal" data-bs-target="#exampleModal"><h3>CHAT DOCTOR</h3></a>
 {% endif %}
 </div>
-
-
-
-
-
+<a href="/isi_wallet" style="text-decoration: none; color: black;">
+	<div class="row justify-content-center" >
+		<div class="cardListChatUser">
+			<h3 class="card-title">amount of money :</h3>
+			<h5 class="jobtype">{{ money }}</h5>
+		</div>
+	</div>   
+</a> -->
 {% include "payment.html" %}
 
-
-
 {% endblock %}
+
+
+
+
+
+
+

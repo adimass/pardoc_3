@@ -2,11 +2,9 @@
 {% block title %}Homepage - Pardoc{% endblock %} 
 {% block content %}
 
-<div class="container">
-    <div class="row justify-content-center">
-
-        <!-- {{session}} -->
-        <h1 class="text-center mt-4">PROFILE</h1>
+<div class="masthead">
+    <div class="container">
+        <h1 class="text-center mb-4">PROFILE</h1>
         <div class="cardProfile shadow-lg">
             <form action="update-users" method="post" enctype="multipart/form-data" class="form-horizontal">
                 <div class="row">
@@ -112,12 +110,12 @@
                 <div class="row justify-content-center">
                     <button type="submit" class="mt-4 btnUpdate">Update Profile</button>      
                 </div>
-                     
+                        
             </form>
         </div>
-        
     </div>
 </div>
+
 
 <script>
     function editGender(selectgender){

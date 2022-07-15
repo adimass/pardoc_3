@@ -102,7 +102,7 @@ def content_list_chat():
         return render_template('login.html')
 
     query = """
-    select pasId
+    select distinct(pasId)
     from hub
     where dokId like '%s'
     """%(session['userId'])
@@ -110,7 +110,7 @@ def content_list_chat():
     if len(df) == 0:
         return render_template('content_dokter_user_chat.html')
     else:
-        users=''
+        users=[]
         list_user = df.values.tolist()
         a = 0
         for i in list_user:
@@ -120,10 +120,8 @@ def content_list_chat():
             where userId like '%s'
             """%(i[0])
             df = db.df_query(query)
+            df = df.iloc[0]
             df = df.values.tolist()
-            if a == 0:
-                users = df
-            else:
-                users.append(df)
-            a=a+1
+            users.append(df)
+        
         return render_template('content_dokter_user_chat.html',pasien=users)
