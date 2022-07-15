@@ -229,10 +229,25 @@ def list_history():
     i=(page-1)*PER_PAGES
     data_page = list_data[i:i+5]
 
-    print(data_page)
-    pagination = Pagination(page=page,per_page=PER_PAGES, total=len(list_data), record_name='List')
+    
+    pagination = Pagination(page=page,per_page=PER_PAGES, total=len(list_data), record_name='list pre-diagnose')
 
-    return render_template('content_history.html', data_pages = data_page,pagination = pagination)
+    query="""
+    select * 
+    from dokter_summary
+    where userId like '%s'
+    """%(session['userId'])
+
+    all_data = db.df_query(query)
+   
+    list_2_data = all_data.values.tolist()
+    data_2_page = list_2_data[i:i+5]
+  
+    
+
+    pagination_dua = Pagination(page=page,per_page=PER_PAGES, total=len(list_2_data), record_name='list summary')
+
+    return render_template('content_history.html', data_pages = data_page,pagination = pagination,data_2_page=data_2_page,pagination_dua=pagination_dua)
 
     
     

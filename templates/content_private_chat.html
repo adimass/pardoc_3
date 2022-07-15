@@ -10,86 +10,110 @@
                     <div class="card-header d-flex justify-content-between align-items-center p-3">
                         <h5 class="mb-0">Chat</h5>
                     </div>
+
+                  
+                    {% if session['role'] == 'user' %}
                     <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer">
-                                <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
-                                <div class="otherBubble other">
-                                    Test
-                                </div>
-                            </div><span class="other"> 02:00 </span>
+                        {% if array_chat %} 
+                            {% for i in array_chat %}
+                            {% if i[1] == session['userId'] %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer own">
+                                    <img class="inlineIcon"
+                                        src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
+                                    <div class="ownBubble own">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="own"> {{ i[5] }} </span>
+                            </div>
+                            {% else %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer">
+                                    <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
+                                    <div class="otherBubble other">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="other"> {{ i[5] }} </span>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                        <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png"
+                          alt="avatar 3" style="width: 40px; height: 100%;">
+                          <form action="/send" method="post">
+                        <input type="text" class="form-control form-control-lg" name="chat" id="chat"
+                          placeholder="Type message">
+                        <input class="submit-button" type="submit" value="send">
+                        </form>
+                        <a href="/end_chat" class="btn btn-primary m-4">END</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
+                        {% if array_chat %} 
+                            {% for i in array_chat %}
+                            {% if i[1] == session['userId'] %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer">
+                                    <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
+                                    <div class="otherBubble other">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="other"> {{ i[5] }} </span>
+                            </div>
+                            {% else %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer own">
+                                    <img class="inlineIcon"
+                                        src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
+                                    <div class="ownBubble own">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="own"> {{ i[5] }} </span>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                        <img src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png"
+                          alt="avatar 3" style="width: 40px; height: 100%;">
+                          <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
+                            <input type="text" class="form-control form-control-lg" name="chat" id="chat"
+                              placeholder="Type message">
+                            <input class="submit-button" type="submit" value="send">
+                            </form>
+                            
+                            <a href="" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#exampleModal">END WITH NOTE</a>
+                      </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Recap Consultation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="{{ url_for('bp_chat.add_summary',user= user) }}" enctype="multipart/form-data"  method="post">
+                                    <div class="mb-3">
+                                      <label for="message-text" class="col-form-label">Notes :</label>
+                                      <textarea class="form-control" id="notes" name="notes"></textarea>
+                                    </div>
+                                  
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" value="END CHAT">
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                            </div>
                         </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer own">
-                                <img class="inlineIcon"
-                                    src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
-                                <div class="ownBubble own">
-                                    Ya
-                                </div>
-                            </div><span class="own"> 02:15 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer">
-                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
-                                <div class="otherBubble other">
-                                    Test
-                                </div>
-                            </div><span class="other"> 02:00 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer own">
-                                <img class="inlineIcon"
-                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
-                                <div class="ownBubble own">
-                                    Ya
-                                </div>
-                            </div><span class="own"> 02:15 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer">
-                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
-                                <div class="otherBubble other">
-                                    Test
-                                </div>
-                            </div><span class="other"> 02:00 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer own">
-                                <img class="inlineIcon"
-                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
-                                <div class="ownBubble own">
-                                    Ya
-                                </div>
-                            </div><span class="own"> 02:15 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer">
-                                <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
-                                <div class="otherBubble other">
-                                    Test
-                                </div>
-                            </div><span class="other"> 02:00 </span>
-                        </div>
-                        <div class="bubbleWrapper">
-                            <div class="inlineContainer own">
-                                <img class="inlineIcon"
-                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
-                                <div class="ownBubble own">
-                                    Ya
-                                </div>
-                            </div><span class="own"> 02:15 </span>
                         </div>
                     </div>
-                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3-bg.webp"
-                          alt="avatar 3" style="width: 40px; height: 100%;">
-                        <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
-                          placeholder="Type message">
-                        <a class="ms-1 text-muted" href="#!"><i class="fas fa-paperclip"></i></a>
-                        <a class="ms-3 text-muted" href="#!"><i class="fas fa-smile"></i></a>
-                        <a class="ms-3" href="#!"><i class="fas fa-paper-plane"></i></a>
-                      </div>
-                </div>
+                    {% endif %}
                 
             </div>
         </div>
