@@ -657,3 +657,15 @@ span.other {
 .scrollbar-cyan {
   scrollbar-color: #00bcd4 #F5F5F5;
 }
+
+/* text area chat */
+
+.green-border-focus .form-control:focus {
+  border: 1px solid #8bc34a;
+  box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+  width: 400px;
+}
+
+textarea.form-control {
+  width: 400px;
+}
