@@ -8,31 +8,15 @@ from dotenv import load_dotenv
 import sqlite3
 from uuid import uuid4
 
-
 app = Flask(__name__)
 app.secret_key = b'XPfUfGyVOG27419oLKG51o0TMBKfSTJS9nmypRzM'
 app.config['PERMANENT_SESSION_LIFETIME'] =  timedelta(minutes=30)
 SESSION_REFRESH_EACH_REQUEST = True
 
-
-
-#this is for 
 dotenv_path = Path('config/.env')
 load_dotenv(dotenv_path=dotenv_path)
 SERVER_RUN = os.getenv('run_server')
 DATABASE = os.getenv('db_name')
-
-
-# @app.errorhandler(Exception)
-# def server_error(err):
-#     app.logger.exception(err)
-#     return "Error server, please contact a-team", 500
-
-
-# @socketio.on('message')
-# def handleMessage(msg):
-#     print('Massage' + msg)
-#     send(msg, broadcast=True)
 
 @app.route("/")
 def content_main():
@@ -68,9 +52,6 @@ app.register_blueprint(bp_transaksi)
 
 if __name__ == '__main__':
 
-    # print(SERVER_RUN)
     app.run('localhost', 8080,debug=True)
+    # app.run(debug=False)
     
-    # socketio.run(app,debug=True)
-
-    # socketio.run(app, host='localhost',port=8080,debug=True)

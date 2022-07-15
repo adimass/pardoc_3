@@ -69,9 +69,7 @@ def execute_query_one(query):
     try:
         cur = conn.cursor()
         cur.execute(query)
-
         rows = cur.fetchone()[0]
-
         cur.close()
         conn.commit()
     except Exception as e:

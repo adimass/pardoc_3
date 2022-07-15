@@ -60,7 +60,7 @@
 			</div>
 			{%else%}
 			<div class="btnResultDiagnose w-100">
-				<a href="{{ url_for('bp_chat.content_private_chat')}}">
+				<a href="{{ url_for('bp_chat.content_private_chat')}}" data-bs-toggle="modal" data-bs-target="#exampleModal">
 					CHAT DOKTER
 				</a>
 			</div>
@@ -69,11 +69,11 @@
 
 		{%if level_penyakit == 'LOW' %}
 		<div class="row justify-content-center text-center">
-			<a href="{{ url_for('bp_self_diagnose.save_diagnose',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = penyakitId,obat_name=obat_name,obat_detail=obat_detail,obat_id=obat_id )}}" class="btnSubmit">SAVE</a>
+			<a href="{{ url_for('bp_self_diagnose.save_diagnose',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = penyakitId,obat_name=obat_name,obat_detail=obat_detail,obat_id=obat_id )}}" class="btnSubmit" data-toggle="modal" data-target="#exampleModal">SAVE</a>
 		</div>
 		{%else%}
 		<div class="row justify-content-center text-center">
-			<a href="{{ url_for('bp_self_diagnose.save_diagnose',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = penyakitId )}}" class="btnSubmit">SAVE</a>
+			<a href="{{ url_for('bp_self_diagnose.save_diagnose',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = penyakitId )}}" class="btnSubmit" data-toggle="modal" data-target="#exampleModal">SAVE</a>
 		</div>
 
 		{% endif %}
@@ -81,6 +81,8 @@
 	 </div>
   </div>
 </div>
+
+{% include "payment.html" %}
 
 
 

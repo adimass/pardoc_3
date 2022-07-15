@@ -30,6 +30,10 @@
 	</div>   
 </a>
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+	Launch static backdrop modal
+</button>
+
 <img src="static/images/dokter.jpg" class="position-relative" style="margin: 36px 20px;" alt="">
 <div>
 	<div class="btnDiagnose position-absolute">
@@ -42,7 +46,7 @@
 
 
 {% if chat %}
-	<a class="btnConsul col-5 p-5 mt-3 m-3" href="{{ url_for('bp_chat.content_private_chat')}}"><h3>CHAT DOCTOR</h3></a>
+	<a class="btnConsul col-5 p-5 mt-3 m-3" href="{{ url_for('bp_chat.content_private_chat')}}" data-bs-toggle="modal" data-bs-target="#exampleModal"><h3>CHAT DOCTOR</h3></a>
 {% endif %}
 </div>
 
@@ -50,6 +54,7 @@
 
 
 
+{% include "payment.html" %}
 
 
 

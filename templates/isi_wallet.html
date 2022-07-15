@@ -3,4 +3,36 @@
 {% block content %} 
 
 
+<article>
+    <div class="container"
+    style="position: absolute;left: 0;right: 0;top: 50%;transform: translateY(-50%);-ms-transform: translateY(-50%);-moz-transform: translateY(-50%);-webkit-transform: translateY(-50%);-o-transform: translateY(-50%);">
+    <div class="row d-flex d-xl-flex justify-content-center justify-content-xl-center">
+      <div class="col-sm-12 col-lg-10 col-xl-9 col-xxl-7 bg-white shadow-lg" style="border-radius: 5px;">
+        <div class="p-5">
+          <div class="text-center">
+            <h4 class="text-dark mb-4">TOP UP WALLET</h4>
+          </div>
+          <form class="user" action="add_money" enctype="multipart/form-data"  method="post">
+              <div class="row mb-3">
+                <input type="number" min="1" step="any" id="money" name="money"/>
+              </div>
+            <div class="row mb-3">
+              <p id="emailErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+              <p id="passwordErrorMsg" class="text-danger" style="display: none;">Paragraph</p>
+            </div>
+            
+            <button id="submitBtn" class="btn btn-primary d-block btn-user w-100" type="submit">Top up</button>
+            <hr />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div></div>
+  </div>
+  
+  
+  
+  </article>
+
+
 {% endblock %}

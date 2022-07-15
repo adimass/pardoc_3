@@ -18,8 +18,7 @@
                     <p>{{ i[3] }}</p>
                     <span class="">{{ i[5] }}</span>
                 </div>
-                
-                
+
                 </div>
                 {% endif %}
             </div>
@@ -34,6 +33,7 @@
         <form action="/send" method="post">
             <textarea placeholder="Talk to me!" class="chatbox" name="chat" id="chat" resize: "none" minlength="2"></textarea>
             <input class="submit-button" type="submit" value="send">
+            <a class="submit-button btnSendChat m-3" href="" role="button">end</a>
         </form>
     </div>
 {% else %}
@@ -43,6 +43,7 @@
             <div class="row justify-content-center">
                 <textarea placeholder="Talk to me!" class="chatbox m-3" name="chat" id="chat" resize: "none" minlength="2"></textarea>
                 <input class="submit-button btnSendChat m-3" type="submit" value="SEND">
+                <a class="submit-button btnSendChat m-3" href="" role="button">end</a>
             </div>
             
         </div>
@@ -50,6 +51,8 @@
     </form>
 </div>
 {% endif %}
+
+
 </div>
 {% endblock %}
 

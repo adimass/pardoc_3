@@ -1,0 +1,68 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	{% if money < 30000 %}
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel"> Insufficient Wallet </h5>
+            <p class="d-flex flex-column mb-0">
+                <b>{{session['name']}}</b><span class="small" style="color:red;" >your balance : Rp. {{money}}</span>
+              </p>
+		  </div>
+		  <div class="modal-body">
+			
+				
+				  
+			<div class="d-flex justify-content-between mt-2">
+				<span>Pardoc Fee </span> <span>Rp. 10000</span>
+			  </div>
+			  <div class="d-flex justify-content-between mt-2">
+				<span>Doctor Fee </span> <span>Rp. 20000</span>
+			  </div>
+			  <hr />
+				  <div class="d-flex justify-content-between mt-2">
+					<span>Total </span> <span class="text-danger">Rp. 30000</span>
+				  </div>
+				
+			
+		  </div>
+		  <div class="modal-footer">
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			<a class="btn btn-success" href="/isi_wallet" role="button">Top Up</a>
+		  </div>
+		</div>
+	  </div>
+
+	{% else %}
+
+	<div class="modal-dialog">
+	  <div class="modal-content">
+		<div class="modal-header">
+			<div>
+                <p class="d-flex flex-column mb-0">
+                  <b>{{session['name']}}</b><span class="small text-muted">Patient Balance : {{money}}</span>
+                </p>
+              </div>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  	  
+			<div class="d-flex justify-content-between mt-2">
+				<span>Pardoc Fee </span> <span>Rp. 10000</span>
+			  </div>
+			  <div class="d-flex justify-content-between mt-2">
+				<span>Doctor Fee </span> <span>Rp. 20000</span>
+			  </div>
+			  <hr />
+			  <div class="d-flex justify-content-between mt-2">
+				<span>Total </span> <span class="text-success">Rp. 30000</span>
+			  </div>
+
+		</div>
+		<div class="modal-footer">
+		  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		  <a class="btn btn-success" href="{{ url_for('bp_transaksi.bayar_wallet',money = money) }}" role="button">Pay & Continue</a>
+		</div>
+	  </div>
+	</div>
+	{% endif %}
+  </div>
