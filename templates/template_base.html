@@ -10,30 +10,54 @@
     <link href="{{ url_for('static',filename='css/style.css') }}" type="text/css" rel="stylesheet" media="screen" /> 
     <script src="{{ url_for('static', filename='jquery-3.6.0.min.js') }}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="{{ url_for('static',filename='css/user.css') }}" type="text/css" rel="stylesheet" media="screen" /> 
+    <link href="{{ url_for('static',filename='css/admin.css') }}" type="text/css" rel="stylesheet" media="screen" /> 
     <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js" ></script> -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.min.js"></script>
 
 </head>
 
 <body id="home">
-       <header id="head">
-        {% if session['google_login'] %}
-        <nav class="navbar navbar-expand-lg" style="background-color: #F87474;">
-            <div class="container-fluid d-flex justify-content-between"> 
-                <a class="nav-link" href="/home"><h3 style="color:#F9F2ED" >PARDOC</h3></a>
 
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:#F9F2ED">
-                          {{session.name}}
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="/list_history">History</a></li>
-                          <li><a class="dropdown-item" href="/user-profile">Update Profile</a></li>
-                          <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                        </ul>
-                      </li>
+        {% if session['google_login'] %}
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand" href="/">PARDOC</a>
+                <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        {% if current_page %}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Article</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#about">Diagnose</a></li>
+                        <li class="nav-item mx-0 mx-lg-1">
+                            <a class="nav-link py-3 px-0 px-lg-3 rounded" href="/isi_wallet">
+                                <i class="fa-solid fa-circle-plus mr-2"></i>
+                                Top Up
+                            </a>
+                        </li>
+                        {% endif %}
+                        <li class="nav-item dropdown mx-0 mx-lg-1">
+                            <a class="nav-link dropdown-toggle py-3 px-0 px-lg-3 rounded" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-id-card-clip mr-2"></i>
+                            {{session.name}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-lg-end" aria-labelledby="navbarDropdownMenuLink">
+                            {% if session.role == 'user' %}
+                            <li><a class="dropdown-item" href="/list_history">History</a></li>
+                            {% endif %}
+                            <li><a class="dropdown-item" href="/user-profile">Update Profile</a></li>
+                            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -42,17 +66,16 @@
         <nav >
             <div class="container-fluid"> 
                 <ul class="nav justify-content-center">
-                    <li class="nav-item"><a class="nav-link" href="/home" style="color: #F87474; padding-top: 50px;"><h3>PARDOC</h3></a></li>
+                    <li class="nav-item"><a class="nav-link" href="/home" style="color: #198754; padding-top: 50px;"><h3>PARDOC</h3></a></li>
                 </ul>
             </div>
         </nav>
         {%endif%}
-    </header>
 
     {% block content %}{% endblock %}
 
     <footer class="footerDefault text-center">
-        <div class="container text-muted py-4 py-lg-5">
+        <div class="py-4 py-lg-5 copyright text-white">
             <p class="mb-0">Copyright © 2022 Binus</p>
         </div>
     </footer>
@@ -62,5 +85,62 @@
       </footer> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /*!
+        * Start Bootstrap - Freelancer v7.0.6 (https://startbootstrap.com/theme/freelancer)
+        * Copyright 2013-2022 Start Bootstrap
+        * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-freelancer/blob/master/LICENSE)
+        */
+        //
+        // Scripts
+        // 
+
+        window.addEventListener('DOMContentLoaded', event => {
+
+        // Navbar shrink function
+        var navbarShrink = function () {
+            const navbarCollapsible = document.body.querySelector('#mainNav');
+            if (!navbarCollapsible) {
+                return;
+            }
+            if (window.scrollY === 0) {
+                navbarCollapsible.classList.remove('navbar-shrink')
+            } else {
+                navbarCollapsible.classList.add('navbar-shrink')
+            }
+
+        };
+
+        // Shrink the navbar 
+        navbarShrink();
+
+        // Shrink the navbar when page is scrolled
+        document.addEventListener('scroll', navbarShrink);
+
+        // Activate Bootstrap scrollspy on the main nav element
+        const mainNav = document.body.querySelector('#mainNav');
+        if (mainNav) {
+            new bootstrap.ScrollSpy(document.body, {
+                target: '#mainNav',
+                offset: 72,
+            });
+        };
+
+        // Collapse responsive navbar when toggler is visible
+        const navbarToggler = document.body.querySelector('.navbar-toggler');
+        const responsiveNavItems = [].slice.call(
+            document.querySelectorAll('#navbarResponsive .nav-link')
+        );
+        responsiveNavItems.map(function (responsiveNavItem) {
+            responsiveNavItem.addEventListener('click', () => {
+                if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                    navbarToggler.click();
+                }
+            });
+        });
+
+        });
+
+    </script>
 </body>
 </html>

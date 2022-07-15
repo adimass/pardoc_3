@@ -2,17 +2,66 @@
 {% block title %}List Symptoms{% endblock %} 
 {% block content %}
 
+<div id="view"> 
+  <div class="container masthead">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-5 text-gray-800">Tables</h1>
 
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Symptom</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAME SYMPTOMS</th>
+                        <th>QUESTIONS OF SYMPTOMS</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </thead>
+                    <!-- <tfoot>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAMA USER</th>
+                        <th>LEVEL</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </tfoot> -->
+                    <tbody>
+                      {% for i in gejala %}
+                        <tr>
+                          <td>{{ loop.index + pagination.skip }}</td>
+                          <td>{{ i[1] }}</td>
+                          <td>{{ i[2] }}</td>
+                          <td><a href="{{ url_for('bp_profile.delete_gejala',gejalaId = i[0]) }}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            DELETE</a></td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-  <div class="container">
+        <div class="text-center mt-4 mb-2">
+          {{ pagination.info }}
+        </div>
+        <div class="wrappagination mb-4">
+          {{ pagination.links }} 
+        </div>
+        {% if session['role'] == 'dokter' %}
+        <a href="{{ url_for('bp_profile.page_add_gejala') }}" class="btn btn-primary m-4">ADD SYMPTOMS</a>
+        {% endif %}
+    </div>
+  </div>
+</div> 
+
+  <!-- <div class="container">
     <div class="row justify-content-center">
-      <!-- {% for i in gejala %}
-      <div class="cardListSymptoms shadow-lg">
-        <h3>{{ i[1] }}</h3>
-        <h3>{{i[2]}} ?</h3>
-        <a href="{{ url_for('bp_profile.delete_gejala',gejalaId = i[0]) }}" class="btn btn-danger">DELETE</a>
-      </div>
-      {% endfor %} -->
 
       <table class="tableDisease mt-4">
         <thead>
@@ -34,13 +83,7 @@
           {% endfor %}
         </tbody>
       </table>
-
-
-
-
-
-
-
+      
       <div class="text-center mt-4 mb-2">
         {{ pagination.info }}
       </div>
@@ -52,7 +95,7 @@
       <a href="{{ url_for('bp_profile.page_add_gejala') }}" class="btn btn-dark">Add SYMPTOMS</a>
       {% endif %}
     </div>
-  </div>
+  </div> -->
 
 
 {% endblock %}

@@ -12,6 +12,7 @@ def content_homepage():
         return render_template('login.html')
     role = session['role']
     if role == 'user':
+        current_page = 'home'
         query="select * from hub where pasId like '%s'"%(session['userId'])
         df = db.df_query(query)
         query = """
@@ -19,9 +20,9 @@ def content_homepage():
         """%(session['userId'])
         money = db.execute_query_one(query)
         if len(df) == 0:
-            return render_template('content_homepage.html',money=money)
+            return render_template('content_homepage.html',money=money, current_page = current_page)
         else:
-            return render_template('content_homepage.html', chat=True,money=money)
+            return render_template('content_homepage.html', chat=True,money=money, current_page = current_page)
 
     elif role == 'dokter':
         return render_template('content_dokter_homepage.html')

@@ -3,7 +3,6 @@ article {
   margin: auto 0;
 }
 
-
 body{
 
   min-height: 100vh;
@@ -53,7 +52,7 @@ body{
 
 .bs-icon.bs-icon-circle {
   border-radius: 50%;
-  background-color:#F87474;
+  background-color:#198754;
 }
 
 .bs-icon-xl {
@@ -123,8 +122,8 @@ body{
 
 .pagination > .active > a{
   color: white;
-    background-color: #FFB562 !Important;
-    border: solid 1px #FFB562 !Important;
+    background-color: #198754 !Important;
+    border: solid 1px #198754 !Important;
 }
 
 .boxfloat { border:2px solid #ccc; width:300px; height: 100px; overflow-y: scroll; }
@@ -377,7 +376,7 @@ a:link{
   width: 105px;
   background-color: #3ab0ff;
   transition: all ease 0.6s;
-  
+  text-decoration: none;
 }
 
 .btnSubmit:hover{
@@ -399,7 +398,7 @@ a:link{
   margin-top: -60px;
 }
 
-table {
+/* table {
   border-collapse: collapse;
 }
 table, th, td {
@@ -412,7 +411,7 @@ th, td {
 th {
   background-color: #3ab0ff;
   color: white;
-}
+} */
 
 .wrappagination{
   display:flex;
@@ -437,12 +436,10 @@ th {
 }
 
 .cardProfile{
-  
   background-color:white; 
   border-radius: 10px;
   padding: 20px 80px;
-  margin: 30px 0 30px;
-  max-width: 840px;
+  margin: 10px 0 10px;
 }
 
 .btnUpdate{
@@ -494,7 +491,6 @@ th {
   border-radius: 10px;
   padding: 20px 80px;
   margin: 30px 0 30px;
-  max-width: 840px;
 }
 
 .btnResultDiagnose{
@@ -552,11 +548,14 @@ th {
 }
 
 .btn-danger{
+  border-color: #198754 !important;
   color: white !important;
-  background-color: #ffb562 !important;
+  font-size: 10px !important;
+  background-color: #198754 !important;
 }
 
 .btn-danger:hover{
+  border-color: #dc3545 !important;
   background-color: #dc3545 !important;
 }
 
@@ -579,4 +578,97 @@ th {
 
 .chatLimit{
   text-decoration: none;
+}
+
+/* chat box */
+
+.bubbleWrapper {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-self: flex-end;
+  color: #fff;
+}
+
+.inlineContainer {
+  display: inline-flex;
+}
+
+.inlineContainer.own {
+  flex-direction: row-reverse;
+}
+
+.inlineIcon {
+  width: 20px;
+  object-fit: contain;
+}
+
+.ownBubble {
+  min-width: 60px;
+  max-width: 700px;
+  padding: 14px 18px;
+  margin: 6px 8px;
+  background-color: #5b5377;
+  border-radius: 16px 16px 0 16px;
+  border: 1px solid #443f56;
+
+}
+
+.otherBubble {
+  min-width: 60px;
+  max-width: 700px;
+  padding: 14px 18px;
+  margin: 6px 8px;
+  background-color: #6C8EA4;
+  border-radius: 16px 16px 16px 0;
+  border: 1px solid #54788e;
+
+}
+
+.own {
+  align-self: flex-end;
+}
+
+.other {
+  align-self: flex-start;
+}
+
+span.own,
+span.other {
+  font-size: 14px;
+  color: grey;
+}
+
+.scrollbar-cyan::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #F5F5F5;
+  border-radius: 10px;
+}
+
+.scrollbar-cyan::-webkit-scrollbar {
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar-cyan::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: #00bcd4;
+}
+
+.scrollbar-cyan {
+  scrollbar-color: #00bcd4 #F5F5F5;
+}
+
+/* text area chat */
+
+.green-border-focus .form-control:focus {
+  border: 1px solid #8bc34a;
+  box-shadow: 0 0 0 0.2rem rgba(139, 195, 74, .25);
+  width: 400px;
+}
+
+textarea.form-control {
+  width: 400px;
 }

@@ -2,7 +2,108 @@
 {% block title %}List History{% endblock %} 
 {% block content %}
 
-<div class="container">
+<div class="container masthead">
+  <!-- Page Heading -->
+  <h1 class="h3 mb-5 text-gray-800">PRE-DIAGNOSE TABLES</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">DataTables History</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>USER NAME</th>
+                      <th>DATE</th>
+                      <th>DISEASE NAME</th>
+                      <th>DRUG RECOMENDATION</th>
+                    </tr>
+                  </thead>
+                  <!-- <tfoot>
+                    <tr>
+                      <th>NO</th>
+                      <th>NAMA USER</th>
+                      <th>LEVEL</th>
+                      <th>ACTION</th>
+                    </tr>
+                  </tfoot> -->
+                  <tbody>
+                    {% for i in data_pages %}
+                      <tr>
+                        <td>{{i[0]}}</td>
+                        <td>{{ session['name'] }}</td>
+                        <td>{{i[6]}}</td>
+                        <td>{{i[8]}}</td>
+                        <td>{{i[9]}}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+      <div class="text-center mt-4 mb-2">
+        {{ pagination.info|safe }}
+      </div>
+      <div class="wrappagination mb-4">
+        {{ pagination.links }} 
+      </div>
+  </div>
+
+
+  <h1 class="h3 mb-5 text-gray-800">DOCTOR NOTE TABLES</h1>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+      <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">DataTables History</h6>
+      </div>
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>SUMMARY DATE</th>
+                      <th>NOTES</th>
+                      
+                    </tr>
+                  </thead>
+                  <!-- <tfoot>
+                    <tr>
+                      <th>NO</th>
+                      <th>NAMA USER</th>
+                      <th>LEVEL</th>
+                      <th>ACTION</th>
+                    </tr>
+                  </tfoot> -->
+                  <tbody>
+                    {% for i in data_2_page %}
+                      <tr>
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[4]}}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+              </table>
+          </div>
+      </div>
+
+      <div class="text-center mt-4 mb-2">
+        {{ pagination_dua.info|safe }}
+      </div>
+      <div class="wrappagination mb-4">
+        {{ pagination_dua.links }} 
+      </div>
+  </div>
+</div>
+
+<!-- <div class="container">
     <div class="row justify-content-center">
        
       <table class="tableDisease mt-4">
@@ -37,6 +138,6 @@
 
 
     </div>
-  </div>
+  </div> -->
 
 {% endblock %}

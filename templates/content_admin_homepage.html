@@ -20,29 +20,90 @@
 {% endif %}
 {% endwith %}
 
-<div class="container">
-	<div class="btnListUser col-12">
-		<a href="{{ url_for('bp_profile.list_users')}}">List User</a>
-	</div>
-	
+<div class="container masthead">
+	<h1 class="text-center mb-5">Dashboard</h1>
 	<div class="row justify-content-center">
-		<div class="col-4">
-			<div class="btnListDisease w-100">
-				<a href="{{ url_for('bp_profile.list_penyakit')}}">List Disease</a>
-			</div>
+
+		
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="{{ url_for('bp_profile.list_users')}}" style="text-decoration: none;">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+									Total User</div>
+								<div class="h5 mb-0 font-weight-bold ">2</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-users fa-2x"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
 		</div>
-		<div class="col-4">
-			<div class="btnListSymtoms w-100">
-				<a href="{{ url_for('bp_profile.list_gejala')}}">List Symptoms</a>
-			</div>
-		</div>
-		<div class="col-4">
-			<div class="btnListDrug w-100">
-				<a href="{{ url_for('bp_profile.list_drug')}}">List Drug</a>
-			</div>
+
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="{{ url_for('bp_profile.list_penyakit')}}" style="text-decoration: none;">
+				<div class="card border-left-danger shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+									Total Diasease</div>
+								<div class="h5 mb-0 font-weight-bold ">9</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-square-virus fa-2x "></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
 		</div>
 	</div>
 
+	<div class="row justify-content-center">
+
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="{{ url_for('bp_profile.list_gejala')}}" style="text-decoration: none;">
+				<div class="card border-left-warning shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+									Total Symptoms</div>
+								<div class="h5 mb-0 font-weight-bold ">28</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-file-waveform fa-2x"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+
+		<div class="col-xl-4 col-md-6 mb-4">
+			<a href="{{ url_for('bp_profile.list_drug')}}" style="text-decoration: none;">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+									Total Drug</div>
+								<div class="h5 mb-0 font-weight-bold ">3</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa-solid fa-capsules fa-2x"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
 </div>
 
 

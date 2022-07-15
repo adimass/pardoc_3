@@ -126,10 +126,11 @@ def answer_diagnose():
 @bp_self_diagnose.route('/result_diagnose', methods=['POST','GET'])
 def result_diagnose():
     
+    if 'true' not in session:
+        return redirect('/self_diagnose')
 
     derita = session['true']
     data = session['flag']
-    print(data[0]['penyakitId'])
     sql ="""
         select *
         from penyakit
@@ -143,11 +144,11 @@ def result_diagnose():
     level_penyakit = penyakit.iloc[0]['level']
     keterangan_penyakit = penyakit.iloc[0]['keterangan']
     date_penyakit = datetime.date(datetime.now())
-
-    if 'gejalaId' in session:
-        session.pop('gejalaId')
-        session.pop("true")
-        session.pop('false')
+    
+    query = """
+            select amount_money from wallet where userId like '%s'        
+             """%(session['userId'])
+    money = db.execute_query_one(query)
 
     if level_penyakit == 'LOW':
 
@@ -164,10 +165,10 @@ def result_diagnose():
         obat_name = obat.iloc[0]['name']
         obat_detail = obat.iloc[0]['keterangan']
 
-        return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'],obat_name =obat_name,obat_detail=obat_detail,obat_id=obat_id)
+        return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'],obat_name =obat_name,obat_detail=obat_detail,obat_id=obat_id,money=money)
 
 
-    return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'])
+    return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'],money=money)
 
 
 @bp_self_diagnose.route('/save_diagnose', methods=['POST','GET'])
@@ -191,12 +192,9 @@ def save_diagnose():
         obat_name = request.args.get("obat_name")
         obat_detail = request.args.get("obat_detail")
         obat_id = request.args.get("obat_id")
-        
         query = """
         insert into hasil values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')
         """%(hasilId,session['userId'],penyakitId,obat_id,session['name'],level_penyakit,date_penyakit,session['gender'],nama_penyakit,obat_name)
-        
-
     else:
         query = """
         insert into hasil values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')
@@ -204,7 +202,11 @@ def save_diagnose():
 
        
     db.execute_query(query)
-        
+    
+    if 'gejalaId' in session:
+        session.pop('gejalaId')
+        session.pop("true")
+        session.pop('false')
 
     return redirect('/home')
 
@@ -227,10 +229,25 @@ def list_history():
     i=(page-1)*PER_PAGES
     data_page = list_data[i:i+5]
 
-    print(data_page)
-    pagination = Pagination(page=page,per_page=PER_PAGES, total=len(list_data), record_name='List')
+    
+    pagination = Pagination(page=page,per_page=PER_PAGES, total=len(list_data), record_name='list pre-diagnose')
 
-    return render_template('content_history.html', data_pages = data_page,pagination = pagination)
+    query="""
+    select * 
+    from dokter_summary
+    where userId like '%s'
+    """%(session['userId'])
+
+    all_data = db.df_query(query)
+   
+    list_2_data = all_data.values.tolist()
+    data_2_page = list_2_data[i:i+5]
+  
+    
+
+    pagination_dua = Pagination(page=page,per_page=PER_PAGES, total=len(list_2_data), record_name='list summary')
+
+    return render_template('content_history.html', data_pages = data_page,pagination = pagination,data_2_page=data_2_page,pagination_dua=pagination_dua)
 
     
     

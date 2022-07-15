@@ -32,20 +32,31 @@
 <div id="view"> 
 
     
-    <div id="container">
-       <h1 class="text-center mt-4 mb-2">List Chat User</h1>
+    <div class="container masthead">
+        <h1 class="text-center mb-4">List Chat Patient</h1>
         {% for i in pasien %}
-        <a href="{{ url_for('bp_chat.content_private_chat',userId = i[0]) }}" style="text-decoration: none; color: black;">
-            <div class="row justify-content-center" >
-                <div class="cardListChatUser">
-                    <h3 class="card-title">{{i[1]}}</h3>
-                    <h5 class="jobtype">{{i[4]}}</h5>
-                </div>
-            </div>   
-        </a>
+        <div class="row justify-content-center">
+            <div class="col-xl-4 col-md-6 mb-4">
+                <a href="{{ url_for('bp_chat.content_private_chat',userId = i[0]) }}" style="text-decoration: none;">
+                    <div class="card border-left-dark shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        {{i[1]}}</div>
+                                    <div class="h5 mb-0 font-weight-bold ">{{i[4]}}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fa-solid fa-user-pen fa-2x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
         {% endfor %}
     </div>
-
 
 </div>
 {% endif %}

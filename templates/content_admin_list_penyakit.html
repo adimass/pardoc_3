@@ -2,8 +2,64 @@
 {% block title %}List Disease{% endblock %} 
 {% block content %}
 
-
 <div id="view"> 
+  <div class="container masthead">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-5 text-gray-800">Tables</h1>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Diasease</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAME DIASEASE</th>
+                        <th>LEVEL</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </thead>
+                    <!-- <tfoot>
+                      <tr>
+                        <th>NO</th>
+                        <th>NAMA USER</th>
+                        <th>LEVEL</th>
+                        <th>ACTION</th>
+                      </tr>
+                    </tfoot> -->
+                    <tbody>
+                      {% for i in penyakit %}
+                        <tr>
+                          <td>{{ loop.index + pagination.skip }}</td>
+                          <td>{{ i[1] }}</td>
+                          <td>{{ i[3] }}</td>
+                          <td><a href="{{ url_for('bp_profile.delete_penyakit',penyakitId = i[0]) }}" class="btn btn-danger">
+                            <i class="fa-solid fa-trash"></i>
+                            DELETE</a></td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 mb-2">
+          {{ pagination.info }}
+        </div>
+        <div class="wrappagination mb-4">
+          {{ pagination.links }} 
+        </div>
+        {% if session['role'] == 'dokter' %}
+        <a href="{{ url_for('bp_profile.page_add_penyakit') }}" class="btn btn-primary m-4">ADD DISEASE</a>
+        {% endif %}
+    </div>
+  </div>
+</div> 
+<!-- <div id="view"> 
   <div class="container">
     <div class="row justify-content-center">
       <table class="tableDisease mt-4">
@@ -39,12 +95,7 @@
     </div>
     
   </div>
-    
-      
-      
-    
-
-</div>   
+</div>    -->
 
 
 {% endblock %}

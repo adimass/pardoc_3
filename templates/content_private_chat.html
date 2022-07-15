@@ -2,55 +2,123 @@
 {% block title %}Private Chat{% endblock %} 
 {% block content %}
 
-<div id="view"> 
-{% if array_chat %}
-    {% for i in array_chat %}
-        <div class="row justify-content-center">
-            
-                {% if i[1] == session['userId'] %}
-                <div class="cardChat shadow-lg" style="background-color: white; ">
-                    <p>{{ i[3] }}</p>
-                    <span class="time-left" >{{ i[5] }}</span>
-                </div>
-                {% else %}
-                <div class="cardChat shadow-lg" style="background-color: #ddd; " >
-                <div class="time-right" >
-                    <p>{{ i[3] }}</p>
-                    <span class="">{{ i[5] }}</span>
-                </div>
-                
-                
-                </div>
-                {% endif %}
-            </div>
-        </div>   
-    {% endfor %}
-{% endif %}
+<section style="background-color: #eee">
+    <div class="container py-5 masthead">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="card" id="chat2">
+                    <div class="card-header d-flex justify-content-between align-items-center p-3">
+                        <h5 class="mb-0">Chat</h5>
+                    </div>
 
+                  
+                    {% if session['role'] == 'user' %}
+                    <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
+                        {% if array_chat %} 
+                            {% for i in array_chat %}
+                            {% if i[1] == session['userId'] %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer own">
+                                    <img class="inlineIcon"
+                                        src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
+                                    <div class="ownBubble own">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="own"> {{ i[5] }} </span>
+                            </div>
+                            {% else %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer">
+                                    <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
+                                    <div class="otherBubble other">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="other"> {{ i[5] }} </span>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                        <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png"
+                          alt="avatar 3" style="width: 40px; height: 100%;">
+                          <form action="/send" method="post">
+                        <input type="text" class="form-control form-control-lg" name="chat" id="chat"
+                          placeholder="Type message">
+                        <input class="submit-button" type="submit" value="send">
+                        </form>
+                        <a href="/end_chat" class="btn btn-primary m-4">END</a>
+                      </div>
+                    </div>
+                    {% else %}
+                    <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
+                        {% if array_chat %} 
+                            {% for i in array_chat %}
+                            {% if i[1] == session['userId'] %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer">
+                                    <img class="inlineIcon" src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png">
+                                    <div class="otherBubble other">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="other"> {{ i[5] }} </span>
+                            </div>
+                            {% else %}
+                            <div class="bubbleWrapper">
+                                <div class="inlineContainer own">
+                                    <img class="inlineIcon"
+                                        src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png">
+                                    <div class="ownBubble own">
+                                        {{ i[3] }}
+                                    </div>
+                                </div><span class="own"> {{ i[5] }} </span>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                        <img src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png"
+                          alt="avatar 3" style="width: 40px; height: 100%;">
+                          <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
+                            <input type="text" class="form-control form-control-lg" name="chat" id="chat"
+                              placeholder="Type message">
+                            <input class="submit-button" type="submit" value="send">
+                            </form>
+                            
+                            <a href="" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#exampleModal">END WITH NOTE</a>
+                      </div>
+                    </div>
 
-<div class="wrappagination" >
-{% if session['role'] == user %}
-    <div class="chatbox-area">
-        <form action="/send" method="post">
-            <textarea placeholder="Talk to me!" class="chatbox" name="chat" id="chat" resize: "none" minlength="2"></textarea>
-            <input class="submit-button" type="submit" value="send">
-        </form>
-    </div>
-{% else %}
-<div class="chatbox-area">
-    <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
-        <div class="boxWriteChat ">
-            <div class="row justify-content-center">
-                <textarea placeholder="Talk to me!" class="chatbox m-3" name="chat" id="chat" resize: "none" minlength="2"></textarea>
-                <input class="submit-button btnSendChat m-3" type="submit" value="SEND">
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Recap Consultation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <form action="{{ url_for('bp_chat.add_summary',user= user) }}" enctype="multipart/form-data"  method="post">
+                                    <div class="mb-3">
+                                      <label for="message-text" class="col-form-label">Notes :</label>
+                                      <textarea class="form-control" id="notes" name="notes"></textarea>
+                                    </div>
+                                  
+                            </div>
+                            <div class="modal-footer">
+                                <input class="btn btn-primary" type="submit" value="END CHAT">
+                            </form>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                
             </div>
-            
         </div>
         
-    </form>
-</div>
-{% endif %}
-</div>
-{% endblock %}
+    </div>
+</section>
 
-</div>
+{% endblock %}
