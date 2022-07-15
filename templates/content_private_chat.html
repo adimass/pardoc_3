@@ -2,13 +2,18 @@
 {% block title %}Private Chat{% endblock %} 
 {% block content %}
 
-<section style="background-color: #eee">
-    <div class="container py-5 masthead">
+<section class="masthead bg-light">
+    <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-6">
                 <div class="card" id="chat2">
                     <div class="card-header d-flex justify-content-between align-items-center p-3">
                         <h5 class="mb-0">Chat</h5>
+                        {% if session['role'] == 'user' %}
+                        <a href="/end_chat" class="btn btn-primary btn-sm">END</a>
+                        {% else %}
+                        <a href="" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">END WITH NOTE</a>
+                        {% endif %}
                     </div>
 
                   
@@ -38,16 +43,17 @@
                             {% endif %}
                             {% endfor %}
                         {% endif %}
-                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                      
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-center align-items-center p-3">
                         <img src="https://cdn1.iconfinder.com/data/icons/user-pictures/100/unknown-256.png"
                           alt="avatar 3" style="width: 40px; height: 100%;">
-                          <form action="/send" method="post">
-                        <input type="text" class="form-control form-control-lg" name="chat" id="chat"
-                          placeholder="Type message">
-                        <input class="submit-button" type="submit" value="send">
+                        <form action="/send" method="post">
+                            <input type="text" class="form-control form-control-lg m-4" name="chat" id="chat"
+                            placeholder="Type message">
                         </form>
-                        <a href="/end_chat" class="btn btn-primary m-4">END</a>
-                      </div>
+                        
+                        <input class="btn btn-primary submit-button ml-5" type="submit" value="SEND">
                     </div>
                     {% else %}
                     <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
@@ -75,17 +81,15 @@
                             {% endif %}
                             {% endfor %}
                         {% endif %}
-                      <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-center align-items-center p-3">
                         <img src="https://cdn2.iconfinder.com/data/icons/covid-19-2/64/30-Doctor-512.png"
                           alt="avatar 3" style="width: 40px; height: 100%;">
-                          <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
-                            <input type="text" class="form-control form-control-lg" name="chat" id="chat"
-                              placeholder="Type message">
-                            <input class="submit-button" type="submit" value="send">
-                            </form>
-                            
-                            <a href="" class="btn btn-primary m-4" data-bs-toggle="modal" data-bs-target="#exampleModal">END WITH NOTE</a>
-                      </div>
+                        <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
+                            <input type="text" class="form-control form-control-lg m-4" name="chat" id="chat"
+                            placeholder="Type message">
+                        </form>
+                        <input class="btn btn-primary submit-button ml-5" type="submit" value="SEND">
                     </div>
 
                     <!-- Modal -->
@@ -107,7 +111,7 @@
                             <div class="modal-footer">
                                 <input class="btn btn-primary" type="submit" value="END CHAT">
                             </form>
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">CLOSE</button>
                             
                             </div>
                         </div>
