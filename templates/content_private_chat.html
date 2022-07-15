@@ -2,58 +2,98 @@
 {% block title %}Private Chat{% endblock %} 
 {% block content %}
 
-<div id="view"> 
-{% if array_chat %}
-    {% for i in array_chat %}
-        <div class="row justify-content-center">
-            
-                {% if i[1] == session['userId'] %}
-                <div class="cardChat shadow-lg" style="background-color: white; ">
-                    <p>{{ i[3] }}</p>
-                    <span class="time-left" >{{ i[5] }}</span>
+<section style="background-color: #eee">
+    <div class="container py-5">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-6">
+                <div class="card" id="chat2">
+                    <div class="card-header d-flex justify-content-between align-items-center p-3">
+                        <h5 class="mb-0">Chat</h5>
+                    </div>
+                    <div class="card-body scrollbar-cyan" style="position: relative; height: 400px; overflow-y: scroll;">
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer">
+                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                <div class="otherBubble other">
+                                    Test
+                                </div>
+                            </div><span class="other"> 02:00 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer own">
+                                <img class="inlineIcon"
+                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+                                <div class="ownBubble own">
+                                    Ya
+                                </div>
+                            </div><span class="own"> 02:15 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer">
+                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                <div class="otherBubble other">
+                                    Test
+                                </div>
+                            </div><span class="other"> 02:00 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer own">
+                                <img class="inlineIcon"
+                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+                                <div class="ownBubble own">
+                                    Ya
+                                </div>
+                            </div><span class="own"> 02:15 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer">
+                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                <div class="otherBubble other">
+                                    Test
+                                </div>
+                            </div><span class="other"> 02:00 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer own">
+                                <img class="inlineIcon"
+                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+                                <div class="ownBubble own">
+                                    Ya
+                                </div>
+                            </div><span class="own"> 02:15 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer">
+                                <img class="inlineIcon" src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png">
+                                <div class="otherBubble other">
+                                    Test
+                                </div>
+                            </div><span class="other"> 02:00 </span>
+                        </div>
+                        <div class="bubbleWrapper">
+                            <div class="inlineContainer own">
+                                <img class="inlineIcon"
+                                    src="https://www.pinclipart.com/picdir/middle/205-2059398_blinkk-en-mac-app-store-ninja-icon-transparent.png">
+                                <div class="ownBubble own">
+                                    Ya
+                                </div>
+                            </div><span class="own"> 02:15 </span>
+                        </div>
+                    </div>
+                    <div class="card-footer text-muted d-flex justify-content-start align-items-center p-3">
+                        <div class="chatbox-area">
+                            <form action="/send" method="post">
+                                <textarea placeholder="Talk to me!" class="chatbox" name="chat" id="chat" resize: "none" minlength="2"></textarea>
+                                <input class="submit-button" type="submit" value="send">
+                            </form>
+                        </div>
+                    </div>
                 </div>
-                {% else %}
-                <div class="cardChat shadow-lg" style="background-color: #ddd; " >
-                <div class="time-right" >
-                    <p>{{ i[3] }}</p>
-                    <span class="">{{ i[5] }}</span>
-                </div>
-
-                </div>
-                {% endif %}
+                
             </div>
-        </div>   
-    {% endfor %}
-{% endif %}
-
-
-<div class="wrappagination" >
-{% if session['role'] == user %}
-    <div class="chatbox-area">
-        <form action="/send" method="post">
-            <textarea placeholder="Talk to me!" class="chatbox" name="chat" id="chat" resize: "none" minlength="2"></textarea>
-            <input class="submit-button" type="submit" value="send">
-            <a class="submit-button btnSendChat m-3" href="" role="button">end</a>
-        </form>
-    </div>
-{% else %}
-<div class="chatbox-area">
-    <form action="{{ url_for('bp_chat.content_send_chat',user= user) }}" method="post">
-        <div class="boxWriteChat ">
-            <div class="row justify-content-center">
-                <textarea placeholder="Talk to me!" class="chatbox m-3" name="chat" id="chat" resize: "none" minlength="2"></textarea>
-                <input class="submit-button btnSendChat m-3" type="submit" value="SEND">
-                <a class="submit-button btnSendChat m-3" href="" role="button">end</a>
-            </div>
-            
         </div>
         
-    </form>
-</div>
-{% endif %}
+    </div>
+</section>
 
-
-</div>
 {% endblock %}
-
-</div>
