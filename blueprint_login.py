@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, send_file,session, abort, redirect, request
+from flask import Blueprint, render_template, redirect, url_for, send_file,session, abort, redirect, request,flash
 import requests
 import json
 import database as db
@@ -26,9 +26,8 @@ def login():
             if str(i[0]) != 'pass':
                 session[i[0]] = i[1]
     else :
+        flash("id or password is wrong, please try again")
         print('user not found')
-
-    
 
     return redirect("/")  
 
