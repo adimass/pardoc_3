@@ -319,16 +319,11 @@ def add_obat():
     id = id+1
     id = 'B'+str(id)
     
-    
     query ="""
-    
     insert into obat values ("%s","%s","%s","%s")
-    
     """%(id,penyakit,name,pertanyaan)
 
     db.execute_query(query)
-
-    
 
     return redirect('/list_drug')
 
