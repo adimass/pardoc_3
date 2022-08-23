@@ -126,10 +126,16 @@ def answer_diagnose():
 @bp_self_diagnose.route('/result_diagnose', methods=['POST','GET'])
 def result_diagnose():
     
-    if 'true' not in session:
-        return redirect('/self_diagnose')
+    # if 'true' not in session:
+    #     return redirect('/self_diagnose')
 
     derita = session['true']
+    if len(derita) < 3:
+        session.pop('gejalaId')
+        session.pop("true")
+        session.pop('false')
+        return redirect('/not_found_penyakit')
+
     data = session['flag']
     sql ="""
         select *
@@ -166,7 +172,6 @@ def result_diagnose():
         obat_detail = obat.iloc[0]['keterangan']
 
         return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'],obat_name =obat_name,obat_detail=obat_detail,obat_id=obat_id,money=money)
-
 
     return render_template('content_result_self_diagnose.html',nama_penyakit=nama_penyakit,level_penyakit = level_penyakit,keterangan_penyakit=keterangan_penyakit,date_penyakit=date_penyakit,penyakitId = data[0]['penyakitId'],money=money)
 
@@ -229,7 +234,6 @@ def list_history():
     i=(page-1)*PER_PAGES
     data_page = list_data[i:i+5]
 
-    
     pagination = Pagination(page=page,per_page=PER_PAGES, total=len(list_data), record_name='list pre-diagnose')
 
     query="""
@@ -239,15 +243,19 @@ def list_history():
     """%(session['userId'])
 
     all_data = db.df_query(query)
-   
     list_2_data = all_data.values.tolist()
     data_2_page = list_2_data[i:i+5]
-  
-    
 
     pagination_dua = Pagination(page=page,per_page=PER_PAGES, total=len(list_2_data), record_name='list summary')
 
     return render_template('content_history.html', data_pages = data_page,pagination = pagination,data_2_page=data_2_page,pagination_dua=pagination_dua)
 
     
+
+@bp_self_diagnose.route('/not_found_penyakit', methods=['POST','GET'])
+def not_found_penyakit():
+
     
+    
+
+    return render_template('notdiagnose.html')
