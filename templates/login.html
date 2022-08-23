@@ -3,22 +3,8 @@
 {% block content %}
 
 
-{% with messages = get_flashed_messages() %}
-{% if messages %}
-<section class="testimonials">
-<div class="row">
-	<div class="large-12 large-centered column">
-	<h3>ERROR</h3>
-	<span>
-	{% for message in messages %}
-	{{ message }}
-	{% endfor %}
-	</span><p></p>
-</div>
-</div>
-</section>
-{% endif %}
-{% endwith %}
+
+
 
 <!-- <section class="contact" id="contact">
 
@@ -44,6 +30,25 @@
   <article>
     <section class="position-relative">
         <div class="container" >
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <section class="testimonials">
+                <div class="row">
+                    <div class="large-12 large-centered column">
+                    <span>
+                    {% for message in messages %}
+                    <div class="alert alert-danger text-center" role="alert">
+                        {{ message }}
+                    </div>
+                    
+                    {% endfor %}
+                    </span><p></p>
+                </div>
+                </div>
+                </section>
+                {% endif %}
+                {% endwith %}
+
             <div class="row mb-3">
                 <div class="col-md-4 col-xl-6 text-center mx-auto">
                     <h2>LOGIN</h2>
